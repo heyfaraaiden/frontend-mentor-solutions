@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: #e5eff5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.pricing-card {
+  max-width: 350px;
+  margin: 4rem 1.5rem;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+}
+
+.pricing-card__section {
+  padding: 1.6rem;
+}
+
+.pricing-card__section-monthly {
+  background-color: #2ab2af;
+  color: #e5eff5;
+}
+
+.pricing-card__section-advantages {
+  background-color: #26ccc9;
+  color: #e5eff5;
+}
+
+.pricing-card__section-advantages h4 {
+  margin-bottom: 1rem;
+}
+
+.pricing-card__description--grayish {
+  color: #98a6bd;
+}
+
+.pricing-card__title {
+  font-size: 1.25rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.4;
+}
+
+.pricing-card__title--cyan {
+  color: #2ab2af;
+}
+
+.pricing-card__guarantee {
+  margin: 1rem 0;
+  color: #c0df34;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.pricing-card__price {
+  margin: 0.6rem 0 -0.3rem;
+  color: rgba(229, 239, 245, 0.6);
+}
+
+.pricing-card__amount {
+  margin-right: 0.3rem;
+  color: #e5eff5;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.pricing-card__button {
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background-color: #c0df34;
+  margin-top: 1.8rem;
+  width: 100%;
+  height: 50px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 8px 16px 5px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 8px 16px 5px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-card__button:hover {
+  opacity: 0.95;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+@media screen and (min-width: 768px) {
+  .pricing-card {
+    margin: 4rem 2rem;
+    max-width: 640px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+        grid-template-areas: 'copy copy' 'subscription advantages';
+  }
+  .pricing-card .pricing-card__section {
+    padding: 2rem 2.1rem;
+  }
+  .pricing-card .pricing-card__section-copy {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: copy;
+  }
+  .pricing-card .pricing-card__section-monthly {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: subscription;
+  }
+  .pricing-card .pricing-card__section-advantages {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: advantages;
+    line-height: 1.5;
+  }
+  .pricing-card .pricing-card__button {
+    margin-top: 2.5rem;
+  }
+}
+/*# sourceMappingURL=main.css.map */

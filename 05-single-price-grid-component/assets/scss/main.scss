@@ -1,0 +1,154 @@
+//********************* GOOGLE FONTS *********************//
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+//********************** VARIABLES **********************//
+$cyan: hsl(179, 62%, 43%);
+$bright-yellow: hsl(71, 73%, 54%);
+$light-gray: hsl(204, 43%, 93%);
+$grayish-blue: hsl(218, 22%, 67%);
+
+//************************ GLOBAL ************************//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: $light-gray;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+//********************* PRICING CARD *********************//
+.pricing-card {
+  max-width: 350px;
+  margin: 4rem 1.5rem;
+
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+
+  &__section {
+    padding: 1.6rem;
+
+    &-monthly {
+      background-color: $cyan;
+      color: $light-gray;
+    }
+
+    &-advantages {
+      background-color: rgb(38, 204, 201);
+      color: $light-gray;
+
+      h4 {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__description--grayish {
+    color: $grayish-blue;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.4;
+
+    &--cyan {
+      color: $cyan;
+    }
+  }
+
+  &__guarantee {
+    margin: 1rem 0;
+    color: $bright-yellow;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  &__price {
+    margin: 0.6rem 0 -0.3rem;
+    color: rgba(229, 239, 245, 0.6);
+  }
+
+  &__amount {
+    margin-right: 0.3rem;
+    color: $light-gray;
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+
+  &__button {
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    background-color: $bright-yellow;
+
+    margin-top: 1.8rem;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    place-items: center;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 5px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      opacity: 0.95;
+      box-shadow: none;
+    }
+  }
+
+  //********************* MEDIA QUERY *********************//
+  @media screen and (min-width: 768px) {
+    .pricing-card {
+      &__section {
+        padding: 2rem 2.1rem;
+
+        &-copy {
+          grid-area: copy;
+        }
+
+        &-monthly {
+          grid-area: subscription;
+        }
+
+        &-advantages {
+          grid-area: advantages;
+          line-height: 1.5;
+        }
+      }
+
+      &__button {
+        margin-top: 2.5rem;
+      }
+    }
+
+    margin: 4rem 2rem;
+    max-width: 640px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      'copy copy'
+      'subscription advantages';
+  }
+}
