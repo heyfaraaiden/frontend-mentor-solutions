@@ -1,0 +1,184 @@
+//********************** GOOGLE FONT **********************//
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+//*********************** VARIABLES ***********************//
+$violet: hsl(263, 55%, 52%);
+$grayish-blue: hsl(217, 19%, 35%);
+$blackish-blue: hsl(219, 29%, 14%);
+$white: hsl(0, 0%, 100%);
+$light-gray: hsl(0, 0%, 81%);
+$light-grayish-blue: hsl(210, 46%, 95%);
+
+//************************ GLOBAL ************************//
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  background-color: $light-grayish-blue;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+//********************* TESTIMONIALS *********************//
+.testimonial {
+  padding: 3rem 1.5rem;
+
+  &__item {
+    padding: 1.5rem 1.9rem 1.8rem;
+    border-radius: 8px;
+    box-shadow: 3px 8px 20px rgba(207, 207, 207, 0.5);
+    cursor: default;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__item--dark-bg {
+    color: $white;
+  }
+
+  &__item--light-bg {
+    color: $grayish-blue;
+  }
+
+  &__item--clifford {
+    background-color: $violet;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-image: url('../images/bg-pattern-quotation.svg');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__item--walters {
+    background-color: $grayish-blue;
+  }
+
+  &__item--harmon,
+  &__item--whittle {
+    background-color: $white;
+  }
+
+  &__item--abrams {
+    background-color: $blackish-blue;
+  }
+
+  &__reviewer-profile,
+  &__copy {
+    position: relative;
+    z-index: 5;
+  }
+
+  &__reviewer-profile {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    border-radius: 50%;
+    width: 30px;
+  }
+
+  &__detail {
+    margin-left: 0.8rem;
+  }
+
+  &__status {
+    opacity: 50%;
+    font-size: 11px;
+  }
+
+  &__headline {
+    font-size: 1.19rem;
+    margin: 1rem 0;
+  }
+
+  &__review {
+    opacity: 70%;
+  }
+}
+
+//********************** MEDIA QUERIES **********************//
+@media screen and (min-width: 568px) {
+  .container {
+    max-width: 510px;
+  }
+
+  .testimonial {
+    &__item--clifford {
+      grid-area: 1 / 1 / 2 / 3; // grid-row-start /grid-column-start / grid-row-end / grid-column-end
+    }
+
+    &__item--walters {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    &__item--harmon {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    &__item--abrams {
+      grid-area: 3 / 1 / 4 / 3;
+    }
+
+    &__item--whittle {
+      grid-area: 4 / 1 / 5 / 3;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .testimonial {
+    &__item--clifford {
+      grid-area: 1 / 1 / 2 / 5; // grid-row-start /grid-column-start / grid-row-end / grid-column-end
+    }
+
+    &__item--walters {
+      grid-area: 1 / 5 / 2 / 6;
+    }
+
+    &__item--harmon {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+
+    &__item--abrams {
+      grid-area: 2 / 2 / 3 / 6;
+    }
+
+    &__item--whittle {
+      grid-area: 1 / 6 / 3 / 7;
+    }
+  }
+}
