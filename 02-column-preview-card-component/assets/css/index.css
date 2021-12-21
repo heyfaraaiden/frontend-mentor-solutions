@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-size: 15px;
+  font-family: 'Lexend Deca', sans-serif;
+  min-height: 100vh;
+  max-width: 1200px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+}
+
+.button {
+  font-family: inherit;
+  padding: 0.75rem 1.6rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.button:hover {
+  -webkit-box-shadow: inset 0 0 0 2px #f2f2f2;
+          box-shadow: inset 0 0 0 2px #f2f2f2;
+  background-color: transparent;
+}
+
+.button--sedan {
+  color: #e38826;
+}
+
+.button--suvs {
+  color: #006970;
+}
+
+.button--luxury {
+  color: #004241;
+}
+
+.button--sedan:hover, .button--suvs:hover, .button--luxury:hover {
+  color: #f2f2f2;
+}
+
+.cards {
+  margin: 4.5rem 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cards__item {
+  padding: 2.8rem 2.3rem;
+  max-width: 310px;
+}
+
+.cards__item:first-child {
+  background-color: #e38826;
+}
+
+.cards__item:nth-child(2) {
+  background-color: #006970;
+}
+
+.cards__item:last-child {
+  background-color: #004241;
+}
+
+.cards__copy {
+  margin: 2rem 0 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cards__title {
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  color: #f2f2f2;
+}
+
+.cards__subtitle {
+  margin: 1.5rem 0;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 881px) {
+  .cards {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  __item {
+    max-width: 290px;
+  }
+  __subtitle {
+    margin: 1.5rem 0 5rem;
+  }
+}
+/*# sourceMappingURL=index.css.map */

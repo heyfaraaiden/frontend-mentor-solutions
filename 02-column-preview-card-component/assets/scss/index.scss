@@ -1,0 +1,122 @@
+//*********************** GOOGLE FONTS ***********************//
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap');
+
+//************************ VARIABLES ************************//
+$bright-orange: hsl(31, 77%, 52%);
+$dark-cyan: hsl(184, 100%, 22%);
+$v-dark-cyan: hsl(179, 100%, 13%);
+$transparent-white-para: hsla(0, 0%, 100%, 0.75);
+$v-light-gray: hsl(0, 0%, 95%);
+
+//*********************** GLOBAL STYLE ***********************//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 15px;
+  font-family: 'Lexend Deca', sans-serif;
+  min-height: 100vh;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: $v-light-gray;
+}
+
+.button {
+  font-family: inherit;
+  padding: 0.75rem 1.6rem;
+  border: none;
+  border-radius: 50px;
+  background-color: $v-light-gray;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    box-shadow: inset 0 0 0 2px $v-light-gray;
+    background-color: transparent;
+  }
+
+  &--sedan {
+    color: $bright-orange;
+  }
+  
+  &--suvs {
+    color: $dark-cyan;
+  }
+  
+  &--luxury {
+    color: $v-dark-cyan;
+  }
+  
+  &--sedan:hover,
+  &--suvs:hover,
+  &--luxury:hover {
+    color: $v-light-gray;
+  }
+}
+
+
+//************************* CARDS *************************//
+.cards {
+  margin: 4.5rem 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+
+  &__item {
+    padding: 2.8rem 2.3rem;
+    max-width: 310px;
+
+    &:first-child {
+      background-color: $bright-orange;
+    }
+
+    &:nth-child(2) {
+      background-color: $dark-cyan;
+    }
+
+    &:last-child {
+      background-color: $v-dark-cyan;
+    }
+
+  }
+
+  &__copy {
+    margin: 2rem 0 0;
+    color: $transparent-white-para;
+  }
+
+  &__title {
+    font-family: 'Big Shoulders Display', cursive;
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    color: $v-light-gray;
+  }
+
+  &__subtitle {
+    margin: 1.5rem 0;
+    line-height: 1.6;
+  }
+}
+
+//*********************** MEDIA QUERY ***********************//
+@media screen and (min-width: 881px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    max-width: 290px;
+  }
+
+  &__subtitle {
+    margin: 1.5rem 0 5rem;
+  }
+}
