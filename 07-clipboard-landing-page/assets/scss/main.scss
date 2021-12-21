@@ -1,0 +1,390 @@
+//***************** GOOGLE FONTS *****************//
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap');
+
+//****************** VARIABLES ******************//
+$strong-cyan: hsl(171, 66%, 44%);
+$light-blue: hsl(233, 100%, 69%);
+$dark-grayish-blue: hsl(210, 10%, 33%);
+$grayish-blue: hsl(201, 11%, 66%);
+
+//****************** FUNCTIONS ******************//
+@function rem($pixels) {
+  @return ($pixels / 16) * 1rem;
+}
+
+//******************* MIXINS ********************//
+@mixin unique-button($button-color, $lighten-amount) {
+  background-color: $button-color;
+  box-shadow: 0 3px 1px darken($color: $button-color, $amount: 10), 0 20px 20px -10px lighten($color: $button-color, $amount: $lighten-amount);
+}
+
+@mixin button-hover($button-color) {
+  background-color: lighten($color: $button-color, $amount: 5);
+}
+
+@mixin button-active($button-color) {
+  box-shadow: 0 0 0 darken($color: $button-color, $amount: 10), 0 0 0 lighten($color: $button-color, $amount: 40);
+  position: relative;
+  top: 3px;
+}
+
+@mixin copy-add-style() {
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+//******************* GLOBAL ********************//
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-size: 1rem;
+  min-height: 100vh;
+  color: $grayish-blue;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $grayish-blue;
+  font-weight: bold;
+
+  &:hover {
+    color: $strong-cyan;
+  }
+}
+
+h1,
+h2,
+h3 {
+  color: $dark-grayish-blue;
+}
+
+h1 {
+  font-size: 1.7rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+.container {
+  padding: 4rem 1.5rem;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.copy {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+.button {
+  padding: 1rem 1rem calc(1rem - 3px);
+  border-radius: 50px;
+  border: none;
+  font-family: inherit;
+  color: #fff;
+  letter-spacing: 0.08rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.buttons {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &--cyan {
+    @include unique-button($strong-cyan, 40);
+
+    &:hover {
+      @include button-hover($strong-cyan);
+    }
+
+    &:active {
+      @include button-active($strong-cyan);
+    }
+  }
+
+  &--blue {
+    @include unique-button($light-blue, 20);
+
+    &:hover {
+      @include button-hover($light-blue);
+    }
+
+    &:active {
+      @include button-active($light-blue);
+    }
+  }
+}
+
+.illustration {
+  margin: 3.5rem 0 3rem;
+
+  img {
+    width: 100%;
+  }
+}
+
+//******************* HEADER *******************//
+.header {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 10%), url('../images/bg-header-mobile.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: rem(300);
+  position: relative;
+
+  &__logo {
+    width: rem(100);
+    position: absolute;
+    bottom: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+//******************** MAIN ********************//
+.hero {
+  &__container {
+    padding-top: 0;
+  }
+
+  &__copy {
+    margin-top: -2rem;
+    position: relative;
+    z-index: 5;
+  }
+}
+
+//****************** FEATURES ******************//
+.features {
+  &__item-copy {
+    @include copy-add-style();
+
+    &:not(:last-child) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__item-subtitle {
+    margin-top: 0.5rem;
+  }
+}
+
+//***************** ACCESSIBLE *****************//
+.accessible {
+  &__container {
+    padding-bottom: 2rem;
+  }
+
+  &__illustration {
+    margin-bottom: 0;
+    filter: drop-shadow(15px 50px 10px lighten($color: $grayish-blue, $amount: 32));
+  }
+}
+
+//******************* TOOLS *******************//
+.tools {
+  &__item {
+    text-align: center;
+    margin-top: 3rem;
+
+    &:first-child {
+      margin-top: 4rem;
+    }
+
+    &-copy {
+      @include copy-add-style();
+    }
+  }
+
+  &__icon {
+    margin-bottom: 1.5rem;
+  }
+}
+
+//***************** PARTNERS *****************//
+.partners {
+  &__companies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  &__company {
+    max-width: 100px;
+  }
+}
+
+//****************** FOOTER ******************//
+.footer {
+  background-color: lighten($color: $grayish-blue, $amount: 30);
+  font-size: 0.9rem;
+
+  &__container {
+    text-align: center;
+    padding: 2.8rem 1.5rem;
+  }
+
+  &__logo {
+    width: rem(40);
+  }
+
+  &__list {
+    margin: 2.5rem 0;
+  }
+
+  &__item {
+    margin-bottom: 1.3rem;
+  }
+
+  &__socmed-link:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  &__socmed-icon {
+    width: 18px;
+  }
+}
+
+//*************** MEDIA QUERIES **************//
+@media screen and (min-width: 600px) {
+  .container {
+    max-width: 1200px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .copy {
+    max-width: 539px;
+  }
+
+  .buttons {
+    align-items: center;
+  }
+
+  .button {
+    width: 327px;
+  }
+
+  .illustration {
+    text-align: center;
+
+    img {
+      max-width: 500px;
+    }
+  }
+
+  .features__item-copy,
+  .tools__item-copy {
+    @include copy-add-style();
+  }
+
+  .partners {
+    &__companies {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 3.5rem;
+    }
+  }
+
+  .apps__container {
+    padding-bottom: 8rem;
+  }
+}
+
+@media screen and (min-width: 906px) {
+  .buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .button {
+    width: 200px;
+  }
+
+  .illustration {
+    img {
+      max-width: 600px;
+    }
+  }
+
+  .header {
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 10%), url('../images/bg-header-desktop.png');
+  }
+
+  .features {
+    &__details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__illustration {
+      position: relative;
+      left: -19rem;
+    }
+
+    &__items {
+      position: relative;
+      left: -12rem;
+    }
+
+    &__item-copy {
+      text-align: left;
+      max-width: 350px;
+    }
+  }
+
+  .tools__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 2rem;
+  }
+
+  .footer {
+    &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 1.8rem 1.5rem;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      text-align: left;
+      margin: 0;
+    }
+  
+    &__item {
+      &:nth-child(2),
+      &:nth-child(4) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
