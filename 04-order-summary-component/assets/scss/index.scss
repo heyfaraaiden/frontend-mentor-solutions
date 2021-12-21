@@ -1,0 +1,175 @@
+//********************** GOOGLE FONT **********************//
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+
+//********************** VARIABLES **********************//
+$pale-blue: hsl(225, 100%, 94%);
+$bright-blue: hsl(245, 75%, 52%);
+$v-pale-blue: hsl(225, 100%, 98%);
+$desaturated-blue: hsl(224, 23%, 55%);
+$dark-blue: hsl(223, 47%, 23%);
+
+//********************** GLOBAL **********************//
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 0.9rem;
+  color: $desaturated-blue;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: $pale-blue;
+  background-image: url('../images/pattern-background-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//******************** ORDER CARD ********************//
+.order {
+  margin: 0 1rem;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0px 5px 40px 0 rgba(56, 41, 224, 0.2);
+
+  &__header {
+    background: url('../images/illustration-hero.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 130px;
+  }
+
+  &__summary {
+    padding: 0.7rem 1.2rem;
+    text-align: center;
+  }
+
+  &__copy {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 235px;
+    line-height: 1.6;
+  }
+
+  &__title {
+    font-weight: 900;
+    color: $dark-blue;
+    margin-bottom: -0.1rem;
+  }
+
+  &__plan {
+    background-color: $v-pale-blue;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center; // vertical
+    justify-items: start; // horizontal
+    margin: 1.3rem 0;
+    padding: 0.1rem 0.7rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+  }
+
+  &__icon {
+    width: 40px;
+  }
+
+  &__chosen-plan {
+    font-weight: 700;
+    color: $dark-blue;
+  }
+
+  &__chosen-bill {
+    margin-top: -0.6rem;
+  }
+
+  &__change-plan {
+    color: $bright-blue;
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: none;
+      opacity: 0.7;
+    }
+  }
+
+  &__action {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    font-size: inherit;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+
+    &--submit {
+      display: block;
+      width: 100%;
+      height: 40px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      background-color: $bright-blue;
+      color: #fff;
+      box-shadow: 0px 18px 45px -9px rgba(56, 41, 224, 0.45);
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &--reset {
+      background-color: transparent;
+      color: $desaturated-blue;
+
+      &:hover {
+        color: $dark-blue;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 375px) {
+  body {
+    font-size: 0.9rem;
+    background-image: url('../images/pattern-background-desktop.svg');
+  }
+
+  .order {
+    &__header {
+      height: 160px;
+    }
+
+    &__summary {
+      padding: 0.7rem 2rem;
+    }
+
+    &__copy {
+      max-width: 290px;
+    }
+
+    &__title {
+      font-size: 1.2rem;
+    }
+
+    &__plan {
+      padding: 0.5rem 1rem;
+    }
+
+    &__chosen-plan {
+      margin-left: -0.5rem;
+    }
+
+    &__button {
+      &--submit {
+        height: 46px;
+      }
+    }
+  }
+}
