@@ -1,0 +1,908 @@
+//----------------------- GOOGLE FONTS -----------------------//
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap');
+
+//------------------------ VARIABLES ------------------------//
+// colors - primary
+$soft-red: hsl(7, 99%, 70%);
+$yellow: hsl(51, 100%, 49%);
+$graphic-design-text: hsl(167, 40%, 24%);
+$photography-text: hsl(198, 62%, 26%);
+$footer-text: hsl(168, 34%, 41%);
+
+// colors - neutral
+$v-dark-desaturated-blue: hsl(212, 27%, 19%);
+$v-dark-grayish-blue: hsl(213, 9%, 39%);
+$dark-grayish-blue: hsl(232, 10%, 55%);
+$white: hsl(0, 0%, 100%);
+$contact-hover: rgba(23, 178, 217, 0.5);
+
+//-------------------------- MIXIN -------------------------//
+@mixin set-background-image($url: url(''), $position: center, $size: cover, $repeat: no-repeat) {
+  background: $url;
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}
+
+@mixin set-flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin custom-underline($border) {
+  content: '';
+  width: 104%;
+  position: absolute;
+  bottom: 0.7rem;
+  left: -2%;
+  border-bottom: $border;
+  border-radius: 5px;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+
+//-------------------------- GLOBAL -------------------------//
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.header__logo,
+.footer__logo,
+.contact,
+.services__copy .g_link {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+}
+
+.g_link {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+.overlay.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+//--------------------------- BODY --------------------------//
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 18px;
+  width: 100%;
+}
+
+//-------------------------- HEADER ------------------------//
+.header {
+  color: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: 0.3s all;
+  z-index: 100;
+
+  .container {
+    @include set-flex(space-between, center);
+    width: 100%;
+    padding: 0.5rem 1rem;
+
+    .nav {
+      position: fixed;
+      left: 1rem;
+      right: 1rem;
+      padding: 1rem 1rem 1.5rem;
+      background-color: $white;
+      text-align: center;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+
+      &.active {
+        top: 90px;
+        transform: translateY(0);
+      }
+
+      &__list {
+        list-style: none;
+      }
+
+      .g_link {
+        color: $dark-grayish-blue;
+        font-size: 0.9rem;
+        display: block;
+        padding: 0.9rem 0.5rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          color: $v-dark-desaturated-blue;
+        }
+      }
+
+      .contact {
+        text-transform: uppercase;
+        background-color: $yellow;
+        padding: 0.9rem 1.5rem;
+        display: inline-block;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        color: #333;
+        margin-top: 0.8rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: $contact-hover;
+          color: $v-dark-desaturated-blue;
+        }
+      }
+
+      .top-pointer {
+        position: absolute;
+        top: -17px;
+        right: 1.25rem;
+      }
+
+      &__triangle {
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          border-right: 10px solid $white;
+          border-bottom: 10px solid $white;
+          border-left: 10px solid transparent;
+          border-top: 10px solid transparent;
+        }
+      }
+    }
+
+    .burger-menu {
+      @include set-flex(flex-end);
+      opacity: 0.8;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      z-index: 250;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      i {
+        font-size: 1.5rem;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.active {
+        i {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}
+
+//-------------------------- HERO -------------------------//
+.hero {
+  @include set-background-image(url('../images/mobile/image-header.jpg'));
+  color: $white;
+
+  .container {
+    @include set-flex(center, center, column);
+    text-align: center;
+    min-height: 350px;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      margin-top: 2rem;
+    }
+
+    .arrow-down {
+      margin-top: 2.5rem;
+      width: 23px;
+      height: 70px;
+      display: block;
+      cursor: pointer;
+      animation: MoveUpDown 2s linear infinite;
+    }
+
+    @keyframes MoveUpDown {
+      0%, 100% { transform: translateY(0) }
+      25%, 75% { transform: translateY(30px) }
+      50% { transform: translateY(60px) }
+    }
+  }
+}
+
+//------------------------- SERVICES -----------------------//
+.services {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__bg {
+    min-height: 250px;
+  }
+
+  .egg {
+    @include set-background-image(url('../images/mobile/image-transform.jpg'));
+  }
+
+  .glass {
+    @include set-background-image(url('../images/mobile/image-stand-out.jpg'));
+  }
+
+  &__copy {
+    padding: 1.5rem 0rem 0.65rem;
+    text-align: center;
+    background-color: rgb(248, 244, 245);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      color: $v-dark-desaturated-blue;
+    }
+
+    p {
+      margin: 1.5rem 0 0.65rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: $dark-grayish-blue;
+    }
+
+    .g_link {
+      color: $v-dark-desaturated-blue;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      display: inline-block;
+      padding: 0.85rem 0.4rem;
+    }
+  }
+
+  .branding {
+    .g_link {
+      position: relative;
+      z-index: 10;
+    }
+
+    .g_link::before {
+      @include custom-underline(8px solid rgba(250, 212, 0, 0.3));
+    }
+
+    .g_link:hover::before {
+      border-bottom: 8px solid $yellow;
+    }
+  }
+
+  .audience {
+    .g_link {
+      position: relative;
+      z-index: 10;
+    }
+
+    .g_link::before {
+      @include custom-underline(8px solid rgba(254, 120, 103, 0.3));
+    }
+
+    .g_link:hover::before {
+      border-bottom: 8px solid $soft-red;
+    }
+  }
+
+  &__bg__copy {
+    min-height: 500px;
+    @include set-background-image($position: center top);
+
+    .container {
+      margin-top: 20rem;
+      text-align: center;
+      line-height: 1.6;
+      color: $graphic-design-text;
+
+      p {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .graphic-design {
+    background-image: url('../images/mobile/image-graphic-design.jpg');
+  }
+
+  .photography {
+    background-image: url('../images/mobile/image-photography.jpg');
+
+    .container {
+      color: $photography-text;
+    }
+  }
+}
+
+//----------------------- TESTIMONIALS ---------------------//
+.testimonials {
+  text-align: center;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background-color: rgb(248, 244, 245);
+
+  .all-testi {
+    max-width: 1200px;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.25rem;
+    color: $dark-grayish-blue;
+  }
+
+  .testi-container {
+    &:not(:last-child) {
+      margin: 2.5rem 0;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 70px;
+    }
+
+    p {
+      margin: 1.2rem 0 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: $v-dark-grayish-blue;
+    }
+
+    h5 {
+      color: $v-dark-desaturated-blue;
+    }
+
+    .job {
+      color: $dark-grayish-blue;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+//-------------------------- GALLERY ------------------------//
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+//-------------------------- FOOTER ------------------------//
+.footer {
+  background-color: hsl(168, 39%, 69%);
+  color: $graphic-design-text;
+  text-align: center;
+
+  .container {
+    padding: 2.5rem 1.5rem;
+    max-width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__logo {
+    font-size: 1.7rem;
+  }
+
+  &__nav {
+    @include set-flex(space-evenly, 0);
+    list-style: none;
+    margin: 1rem 0 4rem;
+
+    .g_link {
+      color: $footer-text;
+      font-size: 0.9rem;
+      padding: 0.85rem 0.4rem;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &__socmed {
+    a {
+      color: $graphic-design-text;
+      font-size: 1.2rem;
+      padding: 0.7rem;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: $white;
+      }
+
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .attribution {
+    background-color: $graphic-design-text;
+    padding: 1rem;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: #5a8f91;
+
+    a {
+      color: hsl(0, 7%, 92%);
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 338px) {
+  //-------------------------- HERO ------------------------//
+  .hero {
+    .container {
+      min-height: 500px;
+
+      h1 {
+        margin-top: 2rem;
+        font-size: 2rem;
+      }
+
+      .arrow-down {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    &__bg__copy {
+      min-height: 520px;
+      @include set-background-image($position: center top);
+
+      .container {
+        margin-top: 23rem;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .container {
+    padding: 2rem;
+  }
+
+  //-------------------------- HEADER ------------------------//
+  .header {
+    .container {
+      padding: 0.5rem 1.5rem;
+
+      .nav {
+        position: fixed;
+        left: 2rem;
+        right: 2rem;
+
+        .top-pointer {
+          position: absolute;
+          top: -28px;
+          right: 1.85rem;
+        }
+
+        &__triangle {
+          &::before {
+            border-right: 15px solid $white;
+            border-bottom: 15px solid $white;
+            border-left: 15px solid transparent;
+            border-top: 15px solid transparent;
+          }
+        }
+      }
+    }
+  }
+
+  //-------------------------- HERO ------------------------//
+  .hero {
+    @include set-background-image(url('../images/desktop/image-header.jpg'));
+
+    .container {
+      min-height: 630px;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-top: -1.5rem;
+      }
+
+      .arrow-down {
+        margin-top: 3.5rem;
+        width: 35px;
+        height: 80px;
+      }
+    }
+  }
+
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    &__bg {
+      min-height: 300px;
+    }
+
+    &__copy {
+      .container {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    &__bg__copy {
+      .container {
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .egg {
+      @include set-background-image(url('../images/desktop/image-transform.jpg'));
+    }
+
+    .glass {
+      @include set-background-image(url('../images/desktop/image-stand-out.jpg'));
+    }
+
+    .graphic-design {
+      background-image: url('../images/desktop/image-graphic-design.jpg');
+    }
+
+    .photography {
+      background-image: url('../images/desktop/image-photography.jpg');
+    }
+  }
+
+  //-------------------------- TESTIMONIALS ------------------------//
+  .testimonials {
+    h4 {
+      font-size: 1rem;
+    }
+
+    .testi-container {
+      .container {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &:not(:last-child) {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      img {
+        width: 90px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  //------------------------- FOOTER ------------------------------//
+  .footer {
+    &__nav {
+      .g_link {
+        font-size: 1rem;
+      }
+    }
+
+    .attribution {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media screen and (min-width: 534px) {
+  .header__logo {
+    font-size: 1.5rem;
+  }
+
+  //-------------------------- HERO ------------------------//
+  .hero {
+    .container {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .arrow-down {
+        margin-top: 3.7rem;
+        height: 90px;
+      }
+    }
+  }
+
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    &__bg {
+      min-height: 350px;
+    }
+  }
+
+  //-------------------------- GALLERY ------------------------//
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 630px) {
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &__bg {
+      min-height: 300px;
+    }
+
+    &__copy {
+      min-height: 300px;
+      text-align: left;
+    }
+
+    &__bg__copy {
+      min-height: 300px;
+
+      .container {
+        margin-top: 13rem;
+        p {
+          margin-bottom: 0rem;
+        }
+      }
+    }
+
+    .branding {
+      order: 1;
+    }
+
+    .egg {
+      order: 2;
+    }
+
+    .glass {
+      order: 3;
+    }
+
+    .audience {
+      order: 4;
+    }
+
+    .graphic-design {
+      order: 5;
+    }
+
+    .photography {
+      order: 6;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  //-------------------------- HEADER ------------------------//
+  .header {
+    .container {
+      // padding-top: 0.8rem;
+      // padding-bottom: 0.8rem;
+
+      .nav {
+        position: static;
+        left: 0;
+        right: 0;
+        padding: 0;
+        background-color: transparent;
+        text-align: left;
+        transform: translateY(0);
+        transition: none;
+
+        &__list {
+          display: flex;
+        }
+
+        &__item:not(:last-child) {
+          margin-right: 1rem;
+        }
+
+        .g_link {
+          color: $white;
+          font-size: 1rem;
+          display: inline-block;
+          padding: 0.9rem 0.5rem;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+
+        .contact {
+          background-color: $white;
+          color: $v-dark-desaturated-blue;
+          padding: 0.9rem 1.5rem;
+          display: inline-block;
+          font-size: 0.8rem;
+          margin-top: 0rem;
+
+          &:hover {
+            color: $white;
+            background-color: $v-dark-desaturated-blue;
+          }
+        }
+
+        .top-pointer {
+          display: none;
+        }
+
+        &__triangle {
+          display: none;
+        }
+      }
+
+      .burger-menu {
+        display: none;
+      }
+    }
+  }
+
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    &__bg,
+    &__copy,
+    &__bg__copy {
+      min-height: 380px;
+    }
+
+    &__copy {
+      .g_link {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  //-------------------------- TESTIMONIALS ------------------------//
+  .testimonials {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    .container {
+      display: grid;
+      justify-content: center;
+
+      .all-testi {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .testi-container {
+      margin-top: 2rem;
+
+      &:not(:last-child) {
+        margin-top: 2rem;
+        margin-bottom: 0;
+      }
+
+      .client {
+        display: grid;
+        justify-self: center;
+      }
+
+      .job {
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    &__bg,
+    &__copy,
+    &__bg__copy {
+      min-height: 450px;
+    }
+
+    &__bg__copy {
+      .container {
+        margin-top: 15rem;
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &__copy {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  //-------------------------- TESTIMONIALS ------------------------//
+  .testimonials {
+    h4 {
+      font-size: 1.2rem;
+    }
+  }
+
+  //------------------------- FOOTER ------------------------------//
+  .footer {
+    &__nav {
+      .g_link {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1138px) {
+  //-------------------------- SERVICES ------------------------//
+  .services {
+    &__bg,
+    &__copy,
+    &__bg__copy {
+      min-height: 500px;
+    }
+
+    &__bg__copy {
+      .container {
+        margin-top: 20rem;
+      }
+    }
+  }
+}
